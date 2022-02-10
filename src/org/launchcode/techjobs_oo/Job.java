@@ -48,6 +48,12 @@ public class Job {
     }
 
     public String toString() {
+        if (employer.getValue() == ""){ employer.setValue("Data not available");}
+        if (location.getValue() == ""){ location.setValue("Data not available");}
+        if (positionType.getValue() == ""){ positionType.setValue("Data not available");}
+        if (coreCompetency.getValue() == ""){ coreCompetency.setValue("Data not available");}
+
+
         return  "\nID: " + id + "\nName: " + name +"\nEmployer: " + employer.getValue() + "\nLocation: " + location.getValue() +"\nPosition Type: " + positionType.getValue() + "\nCore Competency: " + coreCompetency.getValue() +"\n";
     }
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID

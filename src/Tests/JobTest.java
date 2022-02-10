@@ -3,6 +3,7 @@ package Tests;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import org.launchcode.techjobs_oo.Job;
 import org.launchcode.techjobs_oo.Employer;
 import org.launchcode.techjobs_oo.Location;
@@ -54,12 +55,10 @@ public class JobTest {
     }
 
     //Test that toString return a string that contains a blank line before and after the job information when passed a Job object
-    //The string should contain a label for each field, followed by the data stored in that field. Each field should be on its own line.
-    // If a field is empty, the method should add, “Data not available” after the label.
-    @Test
+        @Test
     public void testToString () {
-        testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-
-        assertFalse(testJob1.equals(testJob2));
+        Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(testJob1.toString().startsWith("\n"));
+        assertTrue(testJob1.toString().endsWith("\n"));
     }
 }
