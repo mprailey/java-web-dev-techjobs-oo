@@ -18,16 +18,19 @@ public class JobTest {
     Job testJob1;
     Job testJob2;
 
+
+    // Create new test objects before each test
     @Before
     public void createNewTestObject() {
          testJob1 = new Job();
          testJob2 = new Job();
     }
-
+    // Each Job object should contain a unique ID number, and these should also be sequential integers.
     @Test
     public void testSettingJobId() {
         assertTrue(testJob1.getId() != testJob2.getId() && testJob2.getId()-testJob1.getId() == 1);
     }
+    // Each Job object should contain six fields—id, name, employer, location, positionType, and coreCompetency. The data types for these fields are int, String, Employer, Location, PositionType, and CoreCompetency, respectively.
     @Test
     public void testJobConstructorSetsAllFields() {
        testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -42,10 +45,21 @@ public class JobTest {
         assertTrue(testJob1.getCoreCompetency() instanceof CoreCompetency);
 
     }
-
+    //Test that the two objects are NOT equal if their id values differ, even if all the other fields are identical.
     @Test
     public void testJobsForEquality () {
         testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertFalse(testJob1.equals(testJob2));
+    }
+
+    //Test that toString return a string that contains a blank line before and after the job information when passed a Job object
+    //The string should contain a label for each field, followed by the data stored in that field. Each field should be on its own line.
+    // If a field is empty, the method should add, “Data not available” after the label.
+    @Test
+    public void testToString () {
+        testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertFalse(testJob1.equals(testJob2));
     }
 }
