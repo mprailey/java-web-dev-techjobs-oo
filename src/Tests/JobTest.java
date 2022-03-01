@@ -9,7 +9,6 @@ import org.launchcode.techjobs_oo.Employer;
 import org.launchcode.techjobs_oo.Location;
 import org.launchcode.techjobs_oo.PositionType;
 import org.launchcode.techjobs_oo.CoreCompetency;
-import org.launchcode.techjobs_oo.Main;
 
 import static org.junit.Assert.*;
 
@@ -56,9 +55,38 @@ public class JobTest {
 
     //Test that toString return a string that contains a blank line before and after the job information when passed a Job object
         @Test
-    public void testToString () {
+    public void testToStringNewLines () {
         Job testJob1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(testJob1.toString().startsWith("\n"));
         assertTrue(testJob1.toString().endsWith("\n"));
+    }
+
+    //Test that toString return a string that contains labels
+    @Test
+    public void testToStringLabels () {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(testJob.toString().contains("ID:"));
+        assertTrue(testJob.toString().contains("Name:"));
+        assertTrue(testJob.toString().contains("Employer:"));
+        assertTrue(testJob.toString().contains("Location:"));
+        assertTrue(testJob.toString().contains("Position Type:"));
+        assertTrue(testJob.toString().contains("Core Competency:"));
+    }
+
+
+    //Test that toString return a string that contains "Data not available" if values are ""
+    @Test
+    public void testToStringEmptyValues () {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        if (testJob.getName() ==""){
+            assertTrue(testJob.toString().contains("Data not available"));}
+        if (testJob.getEmployer().getValue() ==""){
+            assertTrue(testJob.toString().contains("Data not available"));}
+        if (testJob.getLocation().getValue() ==""){
+            assertTrue(testJob.toString().contains("Data not available"));}
+        if (testJob.getPositionType().getValue() ==""){
+            assertTrue(testJob.toString().contains("Data not available"));}
+        if (testJob.getCoreCompetency().getValue() ==""){
+            assertTrue(testJob.toString().contains("Data not available"));}
     }
 }
