@@ -37,7 +37,7 @@ public class JobTest {
         assertEquals(testJob1.getName(), "Product tester");
         assertTrue(testJob1 instanceof Job);
         assertTrue(testJob1.getEmployer().getValue()== "ACME");
-        assertTrue(testJob1.getEmployer() instanceof Employer);
+        assertTrue(testJob1.getEmployer() instanceof Employer );
         assertTrue(testJob1.getLocation().getValue()== "Desert");
         assertTrue(testJob1.getLocation() instanceof Location);
         assertTrue(testJob1.getPositionType().getValue()== "Quality control");
